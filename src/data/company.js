@@ -1,5 +1,5 @@
 export const company = {
-  name: "Lamina Labs",
+  name: "Accel Demo Co.",      // ← swap to "Lamina Labs" locally for demo video
   stage: "Seed",
   industry: "AI/ML Infrastructure",
   founded: "2025",
