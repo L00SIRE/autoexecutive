@@ -1,0 +1,38 @@
+export const hiringPlan = [
+  {
+    role: "Senior Backend Engineer",
+    optimalDate: "May 2026",
+    priority: "critical",
+    salary: 165000,
+    impact: "Doubles API throughput; unblocks enterprise features",
+    status: "ready",
+    fundingRequired: "bridge",
+  },
+  {
+    role: "Growth Marketer",
+    optimalDate: "Jul 2026",
+    priority: "high",
+    salary: 95000,
+    impact: "Targets 3x pipeline growth via PLG funnel optimization",
+    status: "planned",
+    fundingRequired: "bridge",
+  },
+  {
+    role: "Customer Success Lead",
+    optimalDate: "Sep 2026",
+    priority: "medium",
+    salary: 85000,
+    impact: "Reduces churn from 8% to projected 3%; increases NRR to 115%",
+    status: "planned",
+    fundingRequired: "seed-ext",
+  },
+  {
+    role: "Junior Engineer",
+    optimalDate: "Nov 2026",
+    priority: "low",
+    salary: 90000,
+    impact: "Supports feature velocity; conditional on Series A trajectory",
+    status: "conditional",
+    fundingRequired: "seed-ext",
+  },
+];
