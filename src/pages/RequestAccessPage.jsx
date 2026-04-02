@@ -3,14 +3,14 @@ import { useNavigate, useLocation } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 
 // ─── EmailJS credentials ──────────────────────────────────────────────────────
-const EMAILJS_SERVICE_ID  = "service_f1fogzq";
+const EMAILJS_SERVICE_ID = "service_f1fogzq";
 const EMAILJS_TEMPLATE_ID = "template_z60krew";
-const EMAILJS_PUBLIC_KEY  = "DfQN_n_9VGoBsxjpV";
+const EMAILJS_PUBLIC_KEY = "DfQN_n_9VGoBsxjpV";
 // ─────────────────────────────────────────────────────────────────────────────
 
-const STAGES   = ["Pre-Seed", "Seed", "Series A", "Series B+", "SMB / Bootstrapped"];
-const SIZES    = ["1–5", "6–15", "16–50", "51–200", "200+"];
-const TOOLS    = ["Stripe", "Mercury", "Digits", "QuickBooks", "Ramp", "Brex", "Gusto", "HubSpot", "None yet"];
+const STAGES = ["Pre-Seed", "Seed", "Series A", "Series B+", "SMB / Bootstrapped"];
+const SIZES = ["1–5", "6–15", "16–50", "51–200", "200+"];
+const TOOLS = ["Stripe", "Mercury", "Digits", "QuickBooks", "Ramp", "Brex", "Gusto", "HubSpot", "None yet"];
 
 /* ─── shared input style ─── */
 const inputCls =
@@ -33,9 +33,9 @@ function ProgressBar({ step }) {
             className="flex items-center justify-center w-7 h-7 border text-[10px] font-bold transition-all duration-300"
             style={{
               borderColor: step >= s ? "#00ff41" : "#1a3a1a",
-              color:       step >= s ? "#00ff41" : "#444",
-              background:  step === s ? "#00ff4115" : "transparent",
-              boxShadow:   step === s ? "0 0 8px #00ff4133" : "none",
+              color: step >= s ? "#00ff41" : "#444",
+              background: step === s ? "#00ff4115" : "transparent",
+              boxShadow: step === s ? "0 0 8px #00ff4133" : "none",
             }}
           >
             {step > s ? "✓" : s}
@@ -101,7 +101,7 @@ function Step1({ data, onChange, onNext }) {
           className={inputCls}
           value={data.role}
           onChange={(e) => onChange("role", e.target.value)}
-          placeholder="e.g. Founder & CEO"
+          placeholder="e.g. Founder & COO"
         />
       </div>
 
@@ -142,7 +142,7 @@ function Step2({ data, onChange, onNext, onBack, sending, emailError }) {
           className={inputCls}
           value={data.company}
           onChange={(e) => onChange("company", e.target.value)}
-          placeholder="e.g. Lamina Labs"
+          placeholder="e.g. AutoExecutive"
         />
       </div>
 
@@ -195,8 +195,8 @@ function Step2({ data, onChange, onNext, onBack, sending, emailError }) {
                 className="px-3 py-1 text-[10px] tracking-wider border transition-all duration-150"
                 style={{
                   borderColor: active ? "#00ff41" : "#1a3a1a",
-                  color:       active ? "#00ff41" : "#444",
-                  background:  active ? "#00ff4115" : "transparent",
+                  color: active ? "#00ff41" : "#444",
+                  background: active ? "#00ff4115" : "transparent",
                 }}
               >
                 {tool}
@@ -241,13 +241,13 @@ function Step2({ data, onChange, onNext, onBack, sending, emailError }) {
 
 /* ─── STEP 3: Confirmation ─── */
 const CONFIRM_LINES = [
-  { text: "> Encrypting submission...",          color: "#888" },
-  { text: "> Validating company profile...",     color: "#888" },
-  { text: "[ OK ] Request received.",            color: "#00ff41" },
-  { text: "> Adding to early access queue...",   color: "#888" },
-  { text: "[ OK ] You're on the list.",          color: "#00ff41" },
-  { text: "> Notifying AutoExecutive team...",   color: "#888" },
-  { text: "[ OK ] Expect contact within 48h.",  color: "#00ff41" },
+  { text: "> Encrypting submission...", color: "#888" },
+  { text: "> Validating company profile...", color: "#888" },
+  { text: "[ OK ] Request received.", color: "#00ff41" },
+  { text: "> Adding to early access queue...", color: "#888" },
+  { text: "[ OK ] You're on the list.", color: "#00ff41" },
+  { text: "> Notifying AutoExecutive team...", color: "#888" },
+  { text: "[ OK ] Expect contact within 48h.", color: "#00ff41" },
 ];
 
 function Step3({ data, emailError }) {
@@ -302,8 +302,8 @@ function Step3({ data, emailError }) {
             key={i}
             className="transition-all duration-300 leading-5"
             style={{
-              color:     line.color,
-              opacity:   visibleLines.includes(i) ? 1 : 0,
+              color: line.color,
+              opacity: visibleLines.includes(i) ? 1 : 0,
               transform: visibleLines.includes(i) ? "translateY(0)" : "translateY(4px)",
             }}
           >
@@ -319,7 +319,7 @@ function Step3({ data, emailError }) {
         <div className="space-y-3">
           {emailError && (
             <div className="border border-[#ff3333] bg-[#1a0000] p-3 text-[10px] text-[#ff3333] tracking-wider">
-              [WARN] Email notification failed: {emailError}<br/>
+              [WARN] Email notification failed: {emailError}<br />
               <span className="text-[#888]">Your request was still logged. Contact hello@autoexecutive.io directly.</span>
             </div>
           )}
@@ -351,22 +351,22 @@ function Step3({ data, emailError }) {
    MAIN REQUEST ACCESS PAGE
 ══════════════════════════════════════════════ */
 export default function RequestAccessPage() {
-  const navigate   = useNavigate();
-  const location   = useLocation();
-  const prefilled  = location.state?.email || "";
+  const navigate = useNavigate();
+  const location = useLocation();
+  const prefilled = location.state?.email || "";
 
-  const [step, setStep]           = useState(1);
-  const [sending, setSending]     = useState(false);
+  const [step, setStep] = useState(1);
+  const [sending, setSending] = useState(false);
   const [emailError, setEmailError] = useState(null);
   const [data, setData] = useState({
-    email:   prefilled,
-    name:    "",
-    role:    "",
+    email: prefilled,
+    name: "",
+    role: "",
     company: "",
-    stage:   "",
-    size:    "",
-    tools:   [],
-    pain:    "",
+    stage: "",
+    size: "",
+    tools: [],
+    pain: "",
   });
 
   function update(field, value) {
@@ -381,15 +381,15 @@ export default function RequestAccessPage() {
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
-          from_name:     data.name,
-          from_email:    data.email,
-          role:          data.role,
-          company:       data.company,
-          stage:         data.stage,
-          team_size:     data.size,
+          from_name: data.name,
+          from_email: data.email,
+          role: data.role,
+          company: data.company,
+          stage: data.stage,
+          team_size: data.size,
           current_tools: (data.tools || []).join(", ") || "None specified",
-          pain_point:    data.pain || "Not provided",
-          source:        "autoexecutive.io — Request Access Form",
+          pain_point: data.pain || "Not provided",
+          source: "autoexecutive.io — Request Access Form",
         },
         EMAILJS_PUBLIC_KEY
       );
