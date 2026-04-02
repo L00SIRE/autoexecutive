@@ -1,29 +1,101 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --color-navy-950: #0a0e1a;
-  --color-navy-900: #111827;
-  --color-navy-800: #1e293b;
-  --color-navy-700: #334155;
+  --font-mono: "JetBrains Mono", "Fira Code", "SF Mono", ui-monospace, monospace;
+  --font-sans: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap");
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #334155 transparent;
+  scrollbar-color: #1a3a1a transparent;
+}
+
+::selection {
+  background: rgba(0, 255, 65, 0.2);
+  color: #00ff41;
 }
 
 body {
   margin: 0;
+  background: #000000;
+  color: #00ff41;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-@keyframes pulse-glow {
+/* Scanline overlay */
+.scanlines::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+}
+
+/* Terminal cursor blink */
+@keyframes blink {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  50% { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+/* Glow effect */
+@keyframes glow-pulse {
+  0%, 100% { text-shadow: 0 0 4px currentColor; }
+  50% { text-shadow: 0 0 8px currentColor, 0 0 16px currentColor; }
+}
+.glow {
+  text-shadow: 0 0 4px currentColor;
+}
+.glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Ticker scroll */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-scroll {
+  animation: ticker-scroll 30s linear infinite;
+}
+
+/* Grid flash on "update" */
+@keyframes flash-update {
+  0% { background: rgba(0, 255, 65, 0.15); }
+  100% { background: transparent; }
+}
+.flash {
+  animation: flash-update 0.5s ease-out;
+}
+
+/* Panel borders - Bloomberg style */
+.panel {
+  border: 1px solid #1a3a1a;
+  background: rgba(0, 8, 0, 0.85);
+  backdrop-filter: blur(4px);
+}
+.panel-header {
+  border-bottom: 1px solid #1a3a1a;
+  background: rgba(0, 20, 0, 0.5);
+  padding: 4px 8px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ff8c00;
 }
