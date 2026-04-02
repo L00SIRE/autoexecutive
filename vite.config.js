@@ -3,6 +3,8 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  base: '/autoexecutive/',
   plugins: [react(), tailwindcss()],
+  build: {
+    chunkSizeWarningLimit: 2000,
+  }
 })
