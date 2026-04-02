@@ -1,20 +1,21 @@
 import { useState, useEffect } from "react";
 import Panel from "../Panel";
+import { company } from "../../data/company";
 
 const analysisLines = [
   { type: "header", text: "EXECUTIVE SUMMARY" },
-  { type: "text", text: "Lamina Labs is at a critical inflection point. With 8.7 months runway and $12.4K MRR, the company shows strong PMF signals but faces a capital allocation decision." },
-  { type: "text", text: "Revenue growth at 520% annualized from May 2025 baseline. Recent MoM deceleration from 11.8% to 8.8% suggests current GTM motion approaching saturation." },
+  { type: "text", text: `${company.name} is at a critical inflection point. With 8.7 months runway and $12.4K MRR, the company is perfectly positioned to capture market share if it executes strategic hires before competitors.` },
+  { type: "text", text: "Market analysis indicates competitors are delaying R&D investments. A targeted hiring push now will unblock enterprise API features and accelerate growth ahead of the competition." },
   { type: "spacer" },
   { type: "header", text: "STRATEGIC RECOMMENDATION" },
-  { type: "highlight", text: "Pursue $2M seed extension within 60 days. 28mo runway enables full hiring plan and Series A positioning at $100K+ MRR." },
+  { type: "highlight", text: "Execute Senior Backend Engineer hire in May 2026. This precisely timed execution leverages a $165K budget to double API throughput and steal market share from dormant competitors." },
   { type: "spacer" },
   { type: "header", text: "IMMEDIATE ACTIONS" },
-  { type: "action", priority: "CRIT", text: "Initiate seed extension conversations with existing investors this week" },
-  { type: "action", priority: "CRIT", text: "File R&D tax credit claim for $34.2K before Q2 deadline" },
-  { type: "action", priority: "HIGH", text: "Switch Delaware franchise tax method by June 1 -- saves $12.8K/yr" },
-  { type: "action", priority: "HIGH", text: "Investigate MRR growth deceleration in mid-market segment" },
-  { type: "action", priority: "MED", text: "Begin Series A prep: target $30K MRR, <5% churn, 3 enterprise logos by Aug 2026" },
+  { type: "action", priority: "CRIT", text: "Open Senior Backend Engineer requisition this week to perfectly hit the May targeted hiring window" },
+  { type: "action", priority: "CRIT", text: "File R&D tax credit claim for $34.2K to immediately offset new hire compensation" },
+  { type: "action", priority: "HIGH", text: "Switch Delaware franchise tax method by June 1 -- frees up an additional $12.8K for headcount" },
+  { type: "action", priority: "HIGH", text: "Review equity compensation bands to ensure top-tier engineering talent acquisition" },
+  { type: "action", priority: "MED", text: "Begin Series A prep: target $30K MRR and 3 enterprise logos driven by new API features" },
 ];
 
 export default function AIPanel() {
@@ -66,8 +67,8 @@ export default function AIPanel() {
               line.priority === "CRIT"
                 ? "text-[#ff3333]"
                 : line.priority === "HIGH"
-                ? "text-[#ff8c00]"
-                : "text-[#4488ff]";
+                  ? "text-[#ff8c00]"
+                  : "text-[#4488ff]";
             return (
               <div key={i} className="flex gap-2">
                 <span className={`text-[10px] font-bold shrink-0 ${color}`}>
